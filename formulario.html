@@ -21,17 +21,27 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden; /* Evita desbordamiento horizontal */
         }
 
-        /* --- NAVEGACIÓN --- */
+        /* --- NAVEGACIÓN RESPONSIVE --- */
         nav {
             background-color: var(--secondary);
             color: var(--bg);
-            padding: 20px 50px;
+            padding: 15px 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Apilado en móvil */
             align-items: center;
             border-bottom: 4px solid var(--primary);
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 20px 50px;
+            }
         }
 
         .logo { 
@@ -45,26 +55,35 @@
         .links a {
             color: var(--bg);
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 10px;
             font-weight: 500;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
 
         .links a:hover { color: var(--primary); }
 
-        /* --- HERO (Estilo unificado con el Inicio) --- */
+        /* --- HERO RESPONSIVE --- */
         .hero {
-            padding: 80px 40px;
+            padding: 40px 20px;
             text-align: center;
             background-color: var(--bg);
         }
 
+        @media (min-width: 768px) {
+            .hero { padding: 80px 40px; }
+        }
+
         h1 {
             color: var(--secondary);
-            font-size: 3rem;
+            font-size: 2rem; /* Más pequeño en móvil */
             text-transform: uppercase;
             margin-bottom: 20px;
             line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
         }
 
         h1 span {
@@ -77,18 +96,25 @@
         .hero p {
             max-width: 700px;
             margin: 0 auto 30px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #444;
         }
 
-        /* --- CONTACT CONTAINER --- */
+        /* --- CONTACT CONTAINER (REGLA PARA NO APACHURRAR) --- */
         .contact-container {
             max-width: 1100px;
             margin: 20px auto 60px;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr; /* Una sola columna en móvil */
             gap: 40px;
+        }
+
+        /* Cambio a dos columnas solo en pantallas grandes */
+        @media (min-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr 1.2fr;
+            }
         }
 
         .contact-info h2 { 
@@ -98,12 +124,15 @@
             text-transform: uppercase;
         }
         
-        /* Formulario Neubrutalista */
         .contact-form {
             border: 3px solid var(--secondary);
-            padding: 40px;
+            padding: 20px; /* Menos padding en móvil */
             background: white;
-            box-shadow: 12px 12px 0px var(--secondary);
+            box-shadow: 8px 8px 0px var(--secondary);
+        }
+
+        @media (min-width: 768px) {
+            .contact-form { padding: 40px; box-shadow: 12px 12px 0px var(--secondary); }
         }
 
         .form-group { margin-bottom: 20px; }
@@ -151,20 +180,28 @@
             box-shadow: 0px 0px 15px var(--primary);
         }
 
-        /* SECCIÓN FAQ PARA RELLENO */
+        /* FAQ RESPONSIVE */
         .faq-section {
             grid-column: 1 / -1;
             margin-top: 40px;
-            padding: 40px;
+            padding: 20px;
             background: var(--gray);
             border: 3px solid var(--secondary);
             box-shadow: 8px 8px 0px var(--primary);
         }
 
+        @media (min-width: 768px) {
+            .faq-section { padding: 40px; }
+        }
+
         .faq-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr; /* 1 columna en móvil */
             gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .faq-grid { grid-template-columns: 1fr 1fr; }
         }
 
         .faq-item h4 { 
@@ -175,32 +212,34 @@
             text-transform: uppercase;
         }
 
-        /* Botón WhatsApp */
         .whatsapp-float {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
+            bottom: 20px;
+            right: 20px;
             background-color: #25d366;
             color: white;
-            width: 65px;
-            height: 65px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 6px 6px 0px var(--secondary);
+            box-shadow: 4px 4px 0px var(--secondary);
             text-decoration: none;
             font-weight: bold;
             z-index: 1000;
             border: 2px solid var(--secondary);
             transition: 0.3s;
         }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
+
+        @media (min-width: 768px) {
+            .whatsapp-float { width: 65px; height: 65px; bottom: 40px; right: 40px; box-shadow: 6px 6px 0px var(--secondary); }
+        }
 
         footer { 
             background: var(--secondary); 
             color: white; 
-            padding: 40px; 
+            padding: 30px 10px; 
             text-align: center; 
             margin-top: 60px;
             border-top: 5px solid var(--primary);
@@ -232,7 +271,7 @@
             
             <div style="margin-top: 40px; background: #fafafa; padding: 25px; border: 2px solid var(--secondary); box-shadow: 8px 8px 0px var(--secondary);">
                 <p><strong>UBICACIÓN:</strong> Adolfo Lugo Verduzco 105, La Cañada, 43615 Tulancingo, Hgo.</p>
-                <p><strong>EMAIL:</strong> natalyestefaniavelasco23@cbtis179.edu.mx
+                <p><strong>EMAIL:</strong> natalyestefaniavelasco23@cbtis179.edu.mx <br>
                 edwinosielramos23@cbtis179.edu.mx</p>
                 <p><strong>RESPUESTA:</strong> Máximo 24 Horas</p>
             </div>
@@ -279,14 +318,12 @@
     </footer>
 
     <script>
-        // Configuración de Firebase
         const firebaseConfig = {
             databaseURL: "https://quickdecide-ba11a-default-rtdb.firebaseio.com/"
         };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        // Manejo del envío
         document.getElementById('firebase-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
