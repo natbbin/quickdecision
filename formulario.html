@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decide.io | Soporte y Contacto</title>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+    <style>
+        :root {
+            --primary: #39FF14;
+            --secondary: #000000;
+            --bg: #FFFFFF;
+            --gray: #f4f4f4;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--secondary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: var(--secondary);
+            color: var(--bg);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .logo { 
+            font-weight: bold; 
+            letter-spacing: 3px; 
+            color: var(--primary); 
+            font-size: 1.5rem; 
+            text-decoration: none;
+        }
+
+        .links a {
+            color: var(--bg);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .links a:hover { color: var(--primary); }
+
+        /* --- HERO (Estilo unificado con el Inicio) --- */
+        .hero {
+            padding: 80px 40px;
+            text-align: center;
+            background-color: var(--bg);
+        }
+
+        h1 {
+            color: var(--secondary);
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h1 span {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0 10px;
+            display: inline-block;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        /* --- CONTACT CONTAINER --- */
+        .contact-container {
+            max-width: 1100px;
+            margin: 20px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .contact-info h2 { 
+            font-size: 2rem; 
+            border-left: 8px solid var(--primary); 
+            padding-left: 15px; 
+            text-transform: uppercase;
+        }
+        
+        /* Formulario Neubrutalista */
+        .contact-form {
+            border: 3px solid var(--secondary);
+            padding: 40px;
+            background: white;
+            box-shadow: 12px 12px 0px var(--secondary);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { 
+            display: block; 
+            font-weight: bold; 
+            margin-bottom: 8px; 
+            text-transform: uppercase; 
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--secondary);
+            font-family: inherit;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            box-shadow: 6px 6px 0px var(--primary);
+            transform: translate(-3px, -3px);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary);
+            color: var(--secondary);
+            box-shadow: 0px 0px 15px var(--primary);
+        }
+
+        /* SECCIÓN FAQ PARA RELLENO */
+        .faq-section {
+            grid-column: 1 / -1;
+            margin-top: 40px;
+            padding: 40px;
+            background: var(--gray);
+            border: 3px solid var(--secondary);
+            box-shadow: 8px 8px 0px var(--primary);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .faq-item h4 { 
+            margin-bottom: 10px; 
+            color: var(--secondary); 
+            border-bottom: 3px solid var(--primary); 
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        /* Botón WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 6px 6px 0px var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+            border: 2px solid var(--secondary);
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(5deg); }
+
+        footer { 
+            background: var(--secondary); 
+            color: white; 
+            padding: 40px; 
+            text-align: center; 
+            margin-top: 60px;
+            border-top: 5px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">DECIDE.IO</a>
+        <div class="links">
+            <a href="index.html">Regresar al Inicio</a>
+            <a href="#faq">Preguntas frecuentes</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <span style="color: var(--secondary); font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; display: block;">
+            <mark style="background-color: var(--primary); padding: 0 8px;">SUPPORT CENTER V1.0</mark>
+        </span>
+        <h1>Soluciones Digitales <br> <span>a tu Alcance.</span></h1>
+        <p>¿Algo no salió como esperabas? Estamos aquí para resolverlo. <br>Desarrollamos la tecnología, tú tomas las decisiones.</p>
+    </section>
+
+    <main class="contact-container">
+        <div class="contact-info">
+            <h2>Hablemos</h2>
+            <p>Si tienes problemas con la app <b>QuickDecision</b>, necesitas soporte técnico o tienes una propuesta de proyecto, nuestro equipo (yo mismo) está listo para responder.</p>
+            
+            <div style="margin-top: 40px; background: #fafafa; padding: 25px; border: 2px solid var(--secondary); box-shadow: 8px 8px 0px var(--secondary);">
+                <p><strong>UBICACIÓN:</strong> Adolfo Lugo Verduzco 105, La Cañada, 43615 Tulancingo, Hgo.</p>
+                <p><strong>EMAIL:</strong> natalyestefaniavelasco23@cbtis179.edu.mx
+                edwinosielramos23@cbtis179.edu.mx</p>
+                <p><strong>RESPUESTA:</strong> Máximo 24 Horas</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form id="firebase-form">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="name" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Email de contacto</label>
+                    <input type="email" id="email" placeholder="tu@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje / Consulta</label>
+                    <textarea id="message" rows="5" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Enviar</button>
+            </form>
+            <p id="success-msg" style="display:none; color: #155724; background: #d4edda; padding: 15px; margin-top: 15px; border: 2px solid #c3e6cb; text-align: center; font-weight: bold;">¡DATOS GUARDADOS CON ÉXITO EN FIREBASE!</p>
+        </div>
+
+        <section class="faq-section" id="faq">
+            <h3 style="text-transform: uppercase; margin-top: 0;">Resolución rápida</h3>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>¿La app QuickDecision es gratis?</h4>
+                    <p>Totalmente. Es un proyecto desarrollado para facilitar la vida de quienes sufren de parálisis por análisis.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Cómo reporto un error (bug)?</h4>
+                    <p>Puedes usar este formulario indicando en el mensaje qué error encontraste y en qué dispositivo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="https://wa.me/5523250368" class="whatsapp-float" target="_blank">WA</a>
+
+    <footer>
+        <p>&copy; 2026 Decide.io Development Group | <span style="color: var(--primary)">Built with Passion.</span></p>
+    </footer>
+
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig = {
+            databaseURL: "https://quickdecide-ba11a-default-rtdb.firebaseio.com/"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Manejo del envío
+        document.getElementById('firebase-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const newContactRef = database.ref('proyectos/decide_app/contactos_web').push();
+            newContactRef.set({
+                nombre: name,
+                correo: email,
+                consulta: message,
+                fecha: new Date().toLocaleString()
+            }).then(() => {
+                document.getElementById('firebase-form').reset();
+                document.getElementById('success-msg').style.display = 'block';
+                setTimeout(() => { document.getElementById('success-msg').style.display = 'none'; }, 5000);
+            }).catch((error) => {
+                alert("Error crítico al guardar. Revisa la consola.");
+            });
+        });
+    </script>
+</body>
+</html>

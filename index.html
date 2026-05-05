@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decide.io | Software Studio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary: #39FF14;
+            --secondary: #000000;
+            --bg: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--secondary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: var(--secondary);
+            color: var(--bg);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .logo {
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .links a {
+            color: var(--bg);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 80px 40px;
+            text-align: center;
+            background-color: var(--bg);
+        }
+
+        h1 {
+            color: var(--secondary);
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0 10px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin: 5px;
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--bg);
+        }
+
+        /* --- STATS --- */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f4f4f4;
+            padding: 40px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--secondary);
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        /* --- GRID Y CARDS --- */
+        .section {
+            padding: 60px 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 2px solid var(--secondary);
+            padding: 30px;
+            background-color: #FFFFFF;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 8px 8px 0px var(--primary);
+            transform: translate(-4px, -4px);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-top: 0;
+            border-left: 5px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--secondary);
+            color: var(--bg);
+            text-align: center;
+            padding: 40px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DECIDE.IO</div>
+        <div class="links">
+            <a href="#servicios">Soluciones</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="formulario.html">Ir al formulario</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <span style="color: var(--secondary); font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; display: block;">
+            <mark style="background-color: var(--primary);">SOFTWARE FACTORY V1.0</mark>
+        </span>
+        <h1>Creamos el futuro de las <br> <span>aplicaciones y mucho más.</span></h1>
+        <p>Aprendices en desarrollo móvil con Flutter e integración de datos en tiempo real. Transformamos problemas complejos en interfaces simples.</p>
+        <div class="cta-group">
+            <a href="#nosotros" class="btn btn-primary">Nuestra Historia</a>
+            <a href="#servicios" class="btn btn-outline">Nuestra Stack</a>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat-item"><h4>99%</h4><p>Uptime Web</p></div>
+        <div class="stat-item"><h4>< 2s</h4><p>Latencia CRUD</p></div>
+        <div class="stat-item"><h4>100%</h4><p>Cloud Sync</p></div>
+    </div>
+
+    <section class="section" id="servicios">
+        <div class="section-title">
+            <h2 style="font-size: 2rem;">Nuestra Especialidad</h2>
+            <p>Arquitectura moderna para aplicaciones de alto rendimiento.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Desarrollo Flutter</h3>
+                <p>Apps nativas para Android compiladas desde un solo código base con alto rendimiento visual.</p>
+            </div>
+            <div class="card">
+                <h3>Cloud Database</h3>
+                <p>Sincronización global inmediata. Tus datos están vivos en la web en menos de un segundo.</p>
+            </div>
+            <div class="card">
+                <h3>UX Prototyping</h3>
+                <p>Diseños funcionales en Figma que priorizan la facilidad de uso y la retención del usuario.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="nosotros" style="background-color: #fafafa; border: 2px dashed var(--secondary); margin-bottom: 40px;">
+        <div class="section-title">
+            <h2 style="font-size: 2rem;">Por qué decidimos decidir</h2>
+            <p style="font-style: italic;">"Para los que pensamos demasiado las cosas, creamos decide.io"</p>
+        </div>
+        
+        <div style="max-width: 800px; margin: auto;">
+            <p><strong>decide.io</strong> no nació en una oficina elegante, sino de un problema que todos tenemos (y que a mí me pasa diario): <b>la parálisis por análisis</b>.</p>
+            
+            <p>Todo empezó como un proyecto escolar. Al buscar una problemática que no estuviera ya saturada, nos dimos cuenta de que perdemos demasiado tiempo y energía en decisiones que deberían ser sencillas. Así nació <b>QuickDecision</b>.</p>
+            
+            <div class="grid" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>Propósito Real</h3>
+                    <p>No pretendemos revolucionar la tecnología global ni ser un gigante corporativo. Nuestra meta es simple: ayudarte a decidir sin tanto conflicto.</p>
+                </div>
+                <div class="card">
+                    <h3>Enfoque Humano</h3>
+                    <p>Somos unos desarrolladores en una etapa temprana que valora la tranquilidad. No buscamos presión de pedidos masivos, sino crear soluciones que funcionen para personas reales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Decide.io Development Group. <span style="color: var(--primary)"> | Built with Passion.</span></p>
+    </footer>
+
+</body>
+</html>
